@@ -34,6 +34,17 @@ allNames:{name:string,url:string}[],
         updateCookie(pagenumber);
       }, );
 
+      const handlePokemonSearch=(value:string|number)=>{
+        setRoute(value);
+    }
+
+    const handleOnChangeTextField=(e:React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>)=>{
+        if(e.target.value==""){
+            setDisplayError(false);
+                         }
+            setText(e.target.value);
+    }
+
 
     const handleSubmit=(e:React.SyntheticEvent)=>{
         const minPokemonId:number=1;
@@ -58,17 +69,7 @@ allNames:{name:string,url:string}[],
             setDisplayError(true)
     }
 
-    const handlePokemonSearch=(value:string|number)=>{
-        setRoute(value);
-    }
-
-    const handleOnChangeTextField=(e:React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>)=>{
-        if(e.target.value==""){
-            setDisplayError(false);
-                         }
-            setText(e.target.value);
-    }
-
+  
    
     const pokemonsList=pokemons.map(pokemon=>{
     const pokemonName:string=pokemon.name[0].toUpperCase()+pokemon.name.substring(1);  
