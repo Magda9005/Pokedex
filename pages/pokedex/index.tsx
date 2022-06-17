@@ -3,15 +3,19 @@ import {
   getPokemonId,
   fuzzySearchResults,
   createAnArrayOfAllNamesAndIds,
-} from "./pokemon/helper_functions";
-import { getAllPokemons } from "./pokemon/storage";
+} from "../../.vscode/functions/helper_functions";
+import { getAllPokemons } from "../../.vscode/functions/storage";
 import React, { useState, useEffect } from "react";
 import { useCookie } from "react-use";
-import SearchForPokemon from "./pokemon/SearchComponent";
-import MiniCard from "./pokemon/MiniCard";
+import SearchForPokemon from "../../components/SearchComponent";
+import MiniCard from "../../components/MiniCard";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
-import { publicApi, pokemonImgApi } from "./pokemon/env_variables";
+import {
+  publicApi,
+  pokemonImgApi,
+} from "../../.vscode/functions/env_variables";
+import styles from "../../components/modules/pokedexMainPage.module.scss";
 
 interface PokemonsListFirstPage {
   pokemons: { name: string; url: string }[];
@@ -54,7 +58,6 @@ const PokemonsListFirstPage: React.FC<PokemonsListFirstPage> = ({
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     const arrayOfAllNamesAndIds = createAnArrayOfAllNamesAndIds(allNames);
-
     if (route == null || !arrayOfAllNamesAndIds.includes(route.toLowerCase())) {
       e.preventDefault();
       return setDisplayError(true);
@@ -78,12 +81,13 @@ const PokemonsListFirstPage: React.FC<PokemonsListFirstPage> = ({
     );
   });
   return (
-    <div className="pokemon-list-container">
-      <div className="pokedex-title">
+    <div className={styles["pokemon-list-container"]}>
+      <div className={styles["pokedex-title"]}>
         <Image
           src="/pokeball-main-page.svg"
           alt="pokeball-logo"
           priority="true"
+          layout="responsive"
           width="328"
           height="32"
         />
@@ -96,30 +100,34 @@ const PokemonsListFirstPage: React.FC<PokemonsListFirstPage> = ({
         onChangeTextField={handleOnChangeTextField}
         action={!displayError && `/pokedex/pokemon/${route}`.toLowerCase()}
       />
-      <div className="pokemon-cards-container">
+      <div className={styles["pokemon-cards-container"]}>
         {displayError && (
-          <div className="error-message">
+          <div className={styles["error-message"]}>
             {" "}
             Sorry, no Pokémon matched your search!
           </div>
         )}
         {pokemonsList}
       </div>
-      <div className="next-btn-area">
+      <div className={styles["next-btn-area"]}>
         <Link href={`/pokedex/${page + 1}`} role="link">
-          <button role="button" className="btn-next-prev">
+          <button role="button" className={styles["btn-next-prev"]}>
             {" "}
-            <img src="/chevron-right-black.svg" className="next-icon" />{" "}
+            <img
+              src="/chevron-right-black.svg"
+              className={styles["next-icon"]}
+            />{" "}
           </button>
         </Link>
       </div>
+      <p className="copyright"> Design: Figma by Ricardo Schiniegoski</p>
     </div>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const apiUrl = publicApi;
-  const data = await fetch(`${apiUrl}/pokemon?offset=0&limit=12`).then(
+  const data = await fetch(`${apiUrl}/pokemon?offset=0&limit=24`).then(
     (response) => response.json()
   );
   const pokemons = data.results;

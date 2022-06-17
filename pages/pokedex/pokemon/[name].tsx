@@ -2,13 +2,20 @@ import {
   getPokemonId,
   getPokemonDescription,
   getAllPokemonsNamesAndIds,
-} from "./helper_functions";
+} from "../../../.vscode/functions/helper_functions";
 import Link from "next/link";
 import { useCookie } from "react-use";
 import Image from "next/image";
 import { GetServerSideProps } from "next";
-import StatsSlider from "./StatSlider";
-import { publicApi, pokemonImgApi } from "./env_variables";
+import StatsSlider from "../../../components/StatSlider";
+import {
+  publicApi,
+  pokemonImgApi,
+} from "../../../.vscode/functions/env_variables";
+import classNames from "classnames/bind";
+import styles from "../../../components/modules/pokemonCard.module.scss";
+
+let className = classNames.bind(styles);
 
 interface Pokemon {
   pokemonsCharacteristic: {
@@ -86,53 +93,78 @@ const Pokemon: React.FC<Pokemon> = ({
   const abilities = pokemonsCharacteristic.abilities.map((ability, index) => {
     if (index < quantityOfAbilitiesToBeDisplayed) {
       return (
-        <span key={ability.name} className="about-parameter">
+        <span key={ability.name} className={styles["about-parameter"]}>
           {ability.ability.name}
         </span>
       );
     }
   });
 
-  const categories = pokemonsCharacteristic.types.map((type) => (
-    <div
-      className={`type` + ` ` + `bgc-` + type.type.name}
-      key={type.type.name}
-    >
-      {type.type.name}
-    </div>
-  ));
+  const categories = pokemonsCharacteristic.types.map((type) => {
+    let category = className(`${styles.type}`, ` bgc-${type.type.name}`);
+    return (
+      <div className={category} key={type.type.name}>
+        {type.type.name}
+      </div>
+    );
+  });
+
+  const chevronRight = className(
+    styles["chevron-right"],
+    styles["chevron-card"]
+  );
+  const chevronLeft = className(styles["chevron-left"], styles["chevron-card"]);
+  const aboutHeader = className(
+    pokemonsCharacteristic.types[0].type.name,
+    styles["about-main-header"]
+  );
+  const statsHeader = className(
+    pokemonsCharacteristic.types[0].type.name,
+    styles["stats-header"]
+  );
+  const statName = className(
+    pokemonsCharacteristic.types[0].type.name,
+    styles["base-stat-name"]
+  );
 
   return (
     <div
       className={
-        `card` + ` ` + `bgc-` + pokemonsCharacteristic.types[0].type.name
+        `${styles.card}` + ` bgc-${pokemonsCharacteristic.types[0].type.name}`
       }
     >
-      <div className="pokemon-name">
-        <div className="name">
+      <div className={styles["pokemon-name"]}>
+        <div className={styles.name}>
           <Link href={page} role="link">
-            <button role="button" className="arrow-left"></button>
+            <button role="button" className={styles["arrow-left"]}></button>
           </Link>{" "}
           {pokemonName}{" "}
         </div>
         <span># {pokemonId}</span>
       </div>
-      <div className="pokeball-container">
-        <Image src="/pokeball.svg" alt="pokeball" width="208" height="208" />
+      <div className={styles["pokeball-container"]}>
+        <Image
+          src="/pokeball.svg"
+          alt="pokeball"
+          layout="responsive"
+          width="208"
+          height="208"
+        />
       </div>
-      <div className="image-container">
+      <div className={styles["image-container"]}>
         <Image
           src={`${pokemonImage}` + pokemonId + `.svg`}
+          layout="responsive"
           width="200"
           height="200"
           alt={pokemonsCharacteristic.name}
         />
       </div>
-      <div className="chevrons-container">
+      <div className={styles["chevrons-container"]}>
         <Link href={`${pokemonId - 1}`} role="link">
           <button
             role="button"
-            className="chevron-left chevron-card"
+            className={chevronLeft}
             disabled={pokemonId < 2}
           ></button>
         </Link>
@@ -140,91 +172,76 @@ const Pokemon: React.FC<Pokemon> = ({
         <Link href={`${pokemonId + 1}`} role="link">
           <button
             role="button"
-            className="chevron-right chevron-card"
+            className={chevronRight}
             disabled={pokemonId > 647}
           ></button>
         </Link>
       </div>
-      <div className="parameters-container">
-        <div className="type-container">{categories}</div>
-        <div className="about-section">
-          <p
-            className={
-              pokemonsCharacteristic.types[0].type.name + ` about-main-header`
-            }
-          >
-            About
-          </p>
-          <div className="about-parameters">
-            <div className="weight-container">
-              <div className="weight">
-                <span className="about-header">Weight</span>
-                <span className="about-parameter">
+      <div className={styles["parameters-container"]}>
+        <div className={styles["type-container"]}>{categories}</div>
+        <div className={styles["about-section"]}>
+          <p className={aboutHeader}>About</p>
+          <div className={styles["about-parameter"]}>
+            <div className={styles["weight-container"]}>
+              <div className={styles.weight}>
+                <span className={styles["about-header"]}>Weight</span>
+                <span className={styles["about-parameter"]}>
                   <img
                     src="/scale.svg"
                     alt="scale icon"
-                    className="scale-icon"
+                    className={styles["scale-icon"]}
                   />{" "}
                   {weight} kg
                 </span>
               </div>
             </div>
-            <div className="height-container">
-              <div className="height">
-                <span className="about-header">Height</span>
-                <span className="about-parameter">
+            <div className={styles["height-container"]}>
+              <div className={styles.height}>
+                <span className={styles["about-header"]}>Height</span>
+                <span className={styles["about-parameter"]}>
                   <img
                     src="/ruler.svg"
                     alt="ruler icon"
-                    className="ruler-icon"
+                    className={styles["ruler-icon"]}
                   />
                   {height} m
                 </span>
               </div>
             </div>
-            <div className="moves-container">
-              <div className="moves">
-                <span className="about-header">Moves</span>
+            <div className={styles["moves-container"]}>
+              <div className={styles.moves}>
+                <span className={styles["about-header"]}>Moves</span>
                 {abilities}
               </div>
             </div>
           </div>
         </div>
-        <div className="pokemon-description">
+        <div className={styles["pokemon-description"]}>
           {
             pokemonsDescriptionText.flavor_text_entries[
               getPokemonDescription(pokemonId)
             ].flavor_text
           }
         </div>
-        <div className="base-stats-container">
-          <div className="base-stats-header">
-            <p
-              className={
-                pokemonsCharacteristic.types[0].type.name + ` stats-header`
-              }
-            >
-              Base stats{" "}
-            </p>
+        <div className={styles["base-stats-container"]}>
+          <div className={styles["base-stats-header"]}>
+            <p className={statsHeader}>Base stats </p>
           </div>
-          <div className="base-stats-parameters">
-            <div
-              className={
-                pokemonsCharacteristic.types[0].type.name + ` base-stat-name`
-              }
-            >
-              {statsHeaders}
+          <div className={styles["base-stats-parameters"]}>
+            <div className={statName}>{statsHeaders}</div>
+          </div>
+          <div className={styles["base-stats-parameters"]}>
+            <div className={styles["base-stat-score"]}>
+              {statsResultsNumbers}
             </div>
           </div>
-          <div className="base-stats-parameters">
-            <div className="base-stat-score">{statsResultsNumbers}</div>
-          </div>
-          <div className="base-stats-parameters">
-            <div className="base-stat-visual-representation">
+          <div className={styles["base-stats-parameters"]}>
+            <div className={styles["base-stat-visual-representation"]}>
               {statsSliders}
             </div>
           </div>
         </div>
+        <p className="copyright"> Design: Figma by Ricardo Schiniegoski</p>
       </div>
     </div>
   );

@@ -6,15 +6,19 @@ import {
   getPokemonId,
   getPreviousPage,
   createAnArrayOfAllNamesAndIds,
-} from "./pokemon/helper_functions";
+} from "../../.vscode/functions/helper_functions";
 import React, { useState, useEffect } from "react";
 import { useCookie } from "react-use";
-import { getAllPokemons } from "./pokemon/storage";
-import SearchForPokemon from "./pokemon/SearchComponent";
-import MiniCard from "./pokemon/MiniCard";
+import { getAllPokemons } from "../../.vscode/functions/storage";
+import SearchForPokemon from "../../components/SearchComponent";
+import MiniCard from "../../components/MiniCard";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
-import { publicApi, pokemonImgApi } from "./pokemon/env_variables";
+import {
+  publicApi,
+  pokemonImgApi,
+} from "../../.vscode/functions/env_variables";
+import styles from "../../components/modules/pokedexMainPage.module.scss";
 
 interface PokemonsListNextPages {
   pokemons: { name: string; url: string }[];
@@ -85,12 +89,13 @@ const PokemonsListNextPages: React.FC<PokemonsListNextPages> = ({
   });
 
   return (
-    <div className="pokemon-list-container">
-      <div className="pokedex-title">
+    <div className={styles["pokemon-list-container"]}>
+      <div className={styles["pokedex-title"]}>
         <Image
           src="/pokeball-main-page.svg"
           alt="pokeball-logo"
           priority="true"
+          layout="responsive"
           width="328"
           height="32"
         />
@@ -103,31 +108,38 @@ const PokemonsListNextPages: React.FC<PokemonsListNextPages> = ({
         onChangeTextField={handleOnChangeTextField}
         action={!displayError && `/pokedex/pokemon/${route}`.toLowerCase()}
       />
-      <div className="pokemon-cards-container">
+      <div className={styles["pokemon-cards-container"]}>
         {displayError && (
-          <div className="error-message">
+          <div className={styles["error-message"]}>
             {" "}
             Sorry, no Pokémon matched your search!
           </div>
         )}
         {listElements}
       </div>
-      <div className="next-previous-page-area">
+      <div className={styles["next-previous-page-area"]}>
         <Link href={getPreviousPage(pagenumber)} role="link">
-          <button role="button" className="btn-next-prev">
+          <button role="button" className={styles["btn-next-prev"]}>
             {" "}
-            <img src="/chevron-left-black.svg" className="previous-icon" />{" "}
+            <img
+              src="/chevron-left-black.svg"
+              className={styles["previous-icon"]}
+            />{" "}
           </button>
         </Link>
         {pagenumber <= lastAccessiblePage && (
           <Link href={`/pokedex/${pagenumber}`} role="link">
-            <button className="btn-next-prev" role="button">
+            <button className={styles["btn-next-prev"]} role="button">
               {" "}
-              <img src="/chevron-right-black.svg" className="next-icon" />{" "}
+              <img
+                src="/chevron-right-black.svg"
+                className={styles["next-icon"]}
+              />{" "}
             </button>
           </Link>
         )}
       </div>
+      <p className="copyright"> Design: Figma by Ricardo Schiniegoski</p>
     </div>
   );
 };

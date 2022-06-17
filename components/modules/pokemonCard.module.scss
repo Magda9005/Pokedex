@@ -1,0 +1,304 @@
+@import "../../styles/breakpoints";
+
+.about-parameter {
+  font-size: 12px;
+}
+
+.type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin: 10px;
+  padding: 4px 4px;
+  border-radius: 8px;
+  color: #ffffff;
+
+  @include md {
+    font-size: 18px;
+  }
+}
+
+.card {
+  position: relative;
+  width: 360px;
+  height: 640px;
+  border-radius: 12px;
+  margin-top: 2%;
+
+  @include md {
+    width: 600px;
+    height: 900px;
+  }
+}
+.pokemon-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 312px;
+  height: 32px;
+  left: 24px;
+  top: 24px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+
+  @include md {
+    width: 550px;
+    height: 45px;
+    font-size: 40px;
+  }
+}
+
+.name {
+  display: flex;
+  align-items: center;
+}
+
+.arrow-left {
+  background-image: url("/arrow-left.svg");
+  background-color: transparent;
+  border: none;
+  width: 30px;
+  height: 30px;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.pokeball-container {
+  position: absolute;
+  width: 208px;
+  height: 208px;
+  left: 144px;
+  top: 8px;
+  opacity: 0.1;
+
+  @include md {
+    left: 287px;
+    width: 300px;
+  }
+}
+.image-container {
+  position: absolute;
+  left: 80px;
+  top: 70px;
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+
+  @include md {
+    width: 300px;
+    left: 150px;
+  }
+}
+
+.chevrons-container {
+  position: absolute;
+  width: 312px;
+  height: 32px;
+  left: 24px;
+  top: 180px;
+  display: flex;
+  justify-content: space-between;
+  width: 312px;
+  height: 32px;
+
+  @include md {
+    width: 550px;
+  }
+}
+
+.chevron-card {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+}
+
+.chevron-left {
+  background-image: URL("/chevron-left.svg");
+}
+
+.chevron-right {
+  background-image: URL("/chevron-right.svg");
+}
+
+.parameters-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 56px 20px 0px;
+  position: absolute;
+  width: 352px;
+  height: 412px;
+  left: 4px;
+  top: 224px;
+  background: #ffffff;
+  border-radius: 8px;
+
+  @include md {
+    top: 300px;
+    width: 592px;
+    height: 596px;
+  }
+}
+.type-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include md {
+    top: 90px;
+  }
+}
+
+.about-section {
+  text-align: center;
+  margin-top: 30px;
+  width: 100%;
+
+  @include md {
+    margin-top: 65px;
+  }
+  .about-main-header {
+    margin-bottom: 0px;
+    font-size: 18px;
+    font-weight: bold;
+
+    @include md {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+  }
+}
+.weight-container,
+.height-container {
+  display: inline-block;
+  width: 30%;
+}
+.weight {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+  border-right: 1px solid lightgrey;
+  height: 60px;
+
+  @include md {
+    height: 70px;
+  }
+}
+.height {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgrey;
+  height: 60px;
+  @include md {
+    height: 70px;
+  }
+}
+.about-header {
+  padding-bottom: 4px;
+  font-size: 10px;
+  color: grey;
+
+  @include md {
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+}
+.scale-icon,
+.ruler-icon {
+  width: 15px;
+  height: 15px;
+  color: black;
+}
+.moves-container {
+  display: inline-block;
+  width: 35%;
+}
+.moves {
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+  @include md {
+    height: 70px;
+  }
+}
+
+.pokemon-description {
+  padding-top: 5px;
+  font-size: 12px;
+
+  @include md {
+    font-size: 17px;
+  }
+}
+.base-stats-container {
+  width: 100%;
+}
+
+.base-stats-header {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+
+  @include md {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  .stats-header {
+    margin-bottom: 0px;
+    margin-top: 0px;
+
+    @include md {
+      margin-top: 15px;
+    }
+  }
+}
+.base-stats-parameters {
+  display: inline-block;
+}
+
+.base-stat-name {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgrey;
+  font-size: 12px;
+  padding-right: 8px;
+
+  @include md {
+    font-size: 17px;
+    padding-right: 15px;
+  }
+}
+
+.base-stat-score {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  padding-left: 8px;
+
+  @include md {
+    font-size: 17px;
+    padding-left: 15px;
+  }
+}
+
+.base-stat-visual-representation {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  @include md {
+    padding-left: 15px;
+  }
+}
