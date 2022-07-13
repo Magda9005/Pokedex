@@ -1,14 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
-}
+  reactStrictMode: true,
+};
 
-// module.exports = nextConfig
+const path = require("path");
 
 module.exports = {
   images: {
-    dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: ['raw.githubusercontent.com'],
+    domains: ["raw.githubusercontent.com"],
   },
-}
+  sassOptions: {
+    includePaths: [path.join(__dirname, "styles")],
+  },
+};
