@@ -110,6 +110,22 @@
   }
 }
 
+.chevrons-container-firstPokemon {
+  position: absolute;
+  width: 312px;
+  height: 32px;
+  left: 24px;
+  top: 180px;
+  display: flex;
+  justify-content: flex-end;
+  width: 312px;
+  height: 32px;
+
+  @include md {
+    width: 550px;
+  }
+}
+
 .chevron-card {
   background-repeat: no-repeat;
   background-position: center;

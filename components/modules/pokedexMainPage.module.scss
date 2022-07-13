@@ -1,0 +1,152 @@
+@import "../../styles/breakpoints";
+
+.pokemon-list-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px 16px 0px;
+  position: relative;
+  width: 100%;
+  background: #f7f7f7;
+
+  @include lg {
+    width: 800px;
+    border-radius: 12px;
+  }
+
+  @include xl {
+    width: 1000px;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  margin-right: 4px;
+  top: 62px;
+  right: 290px;
+}
+
+.searchbar {
+  width: 328px;
+  height: 24px;
+}
+
+.pokedex-title {
+  display: block;
+  width: 328px;
+  height: 32px;
+  margin-bottom: 10px;
+
+  @include md {
+    width: 600px;
+    height: 60px;
+    margin-bottom: 20px;
+  }
+
+  @include lg {
+    width: 800px;
+    height: 80px;
+    margin-bottom: 30px;
+  }
+}
+
+.pokemon-cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 15px;
+
+  @include md {
+    margin-top: 30px;
+  }
+}
+
+.next-button-area {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 15px;
+
+  @include xl {
+    margin-top: 0px;
+  }
+}
+
+.next-previous-page-area {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+
+  @include xl {
+    margin-top: 0px;
+  }
+  .previous-icon,
+  .next-icon {
+    width: 20px;
+    height: 20px;
+
+    @include md {
+      width: 30px;
+      height: 30px;
+    }
+
+    @include lg {
+      width: 40px;
+      height: 40px;
+    }
+    @include xl {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+.next-prev-link {
+  width: 30px;
+  height: 30px;
+  z-index: 1;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+
+  @include md {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.next-btn-area {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  @include md {
+    margin-top: 0px;
+  }
+}
+
+.chevron {
+  width: 25px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.error-message {
+  width: 100%;
+  font-size: 15px;
+  margin-bottom: 7px;
+  margin-top: -6px;
+
+  @include md {
+    font-size: 24px;
+    margin-top: -22px;
+    margin-bottom: 10px;
+  }
+}

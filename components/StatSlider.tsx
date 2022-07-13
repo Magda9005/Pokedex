@@ -1,16 +1,11 @@
 import { getStatValuePercentage } from "../.vscode/functions/helper_functions";
 import classNames from "classnames/bind";
 import styles from "./modules/statsSlider.module.css";
+import { StatsSliderProps } from "../.vscode/functions/interfaces";
 
 let className = classNames.bind(styles);
 
-interface StatsSlider {
-  statName: string;
-  statValue: number;
-  pokemonType: string;
-}
-
-const StatsSlider: React.FC<StatsSlider> = ({
+const StatsSlider: React.FC<StatsSliderProps> = ({
   statName,
   statValue,
   pokemonType,

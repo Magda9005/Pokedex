@@ -3,23 +3,9 @@ import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import React from "react";
 import styles from "./modules/searchComponent.module.css";
+import { PokemonSearchProps } from "../.vscode/functions/interfaces";
 
-interface SearchForPokemon {
-  result: {
-    item: {
-      name: string;
-    };
-  }[];
-  route: string | number | null;
-  onSubmit: (e: React.SyntheticEvent) => void;
-  onChangeAutocomplete: (value: string | number) => void;
-  onChangeTextField: (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => void;
-  action: string;
-}
-
-const SearchForPokemon: React.FC<SearchForPokemon> = ({
+const PokemonSearch: React.FC<PokemonSearchProps> = ({
   result,
   route,
   onSubmit,
@@ -28,12 +14,7 @@ const SearchForPokemon: React.FC<SearchForPokemon> = ({
   action,
 }) => {
   return (
-    <form
-      role="form"
-      action={action}
-      method="GET"
-      onSubmit={(e) => onSubmit(e)}
-    >
+    <form role="form" action={action} method="GET" onSubmit={onSubmit}>
       <div className={styles["search-container"]}>
         <Stack
           spacing={2}
@@ -106,4 +87,4 @@ const SearchForPokemon: React.FC<SearchForPokemon> = ({
   );
 };
 
-export default SearchForPokemon;
+export default PokemonSearch;
