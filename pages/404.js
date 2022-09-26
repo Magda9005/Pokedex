@@ -6,7 +6,7 @@ const NotFound = () => (
     <h1 className={styles["error-page-main-title"]}> 404 </h1>
     <h2 className={styles["error-page-subtitle"]}>Not found!</h2>
     <p>Sorry,we can't find what you're looking for.</p>
-    <Link href={`/pokedex`} role="link">
+    <Link href={`/pokedex`}>
       <button className={styles["go-back-home-btn"]} role="button">
         Go back home
       </button>

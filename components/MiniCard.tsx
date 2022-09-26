@@ -1,10 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import classNames from "classnames/bind";
-import styles from "./modules/MiniCard.module.css";
-import { MiniCardProps } from "../.vscode/functions/interfaces";
+import styles from "./modules/miniCard.module.scss";
 
 let className = classNames.bind(styles);
+
+interface MiniCardProps {
+  pokemon: {
+    name: string;
+  };
+  pokemonId: number;
+  pokemonImage: string;
+  pokemonName: string;
+  pokemonsNamesAndTypes: any;
+}
 
 const MiniCard: React.FC<MiniCardProps> = ({
   pokemon,

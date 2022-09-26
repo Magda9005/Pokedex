@@ -1,23 +1,49 @@
-import {
-  getPokemonId,
-  getPokemonDescription,
-  getAllPokemonsNamesAndIds,
-  jsonFetch,
-} from "../../.vscode/functions/helper_functions";
+import { getPokemonId, getProperPokemonId } from "../../logic/data";
+import { jsonFetch, RequestFailError } from "../../logic/fetch";
 import Link from "next/link";
 import { useCookie } from "react-use";
 import Image from "next/image";
 import { GetServerSideProps } from "next";
 import StatsSlider from "../../components/StatSlider";
+import PokemonParameters from "../../components/PokemonParameters";
 import {
   publicApi,
   pokemonImgApi,
 } from "../../.vscode/functions/env_variables";
 import classNames from "classnames/bind";
 import styles from "../../components/modules/pokemonCard.module.scss";
-import { PokemonProps } from "../../.vscode/functions/interfaces";
 
 let className = classNames.bind(styles);
+
+interface PokemonProps {
+  pokemonsCharacteristic: {
+    forms: {
+      url: string;
+    };
+    types: {
+      type: {
+        name: string;
+      };
+    }[];
+    stats: {
+      base_stat: number;
+    };
+    name: string;
+    weight: number;
+    height: number;
+    abilities: {
+      name: string;
+      ability: {
+        name: string;
+      };
+    }[];
+  };
+  pokemonsDescriptionText: {
+    flavor_text_entries: {
+      flavor_text: string;
+    };
+  };
+}
 
 const Pokemon: React.FC<PokemonProps> = ({
   pokemonsCharacteristic,
@@ -150,72 +176,23 @@ const Pokemon: React.FC<PokemonProps> = ({
           </Link>
         )}
       </div>
-      <div className={styles["parameters-container"]}>
-        <div className={styles["type-container"]}>{categories}</div>
-        <div className={styles["about-section"]}>
-          <p className={aboutHeader}>About</p>
-          <div className={styles["about-parameter"]}>
-            <div className={styles["weight-container"]}>
-              <div className={styles.weight}>
-                <span className={styles["about-header"]}>Weight</span>
-                <span className={styles["about-parameter"]}>
-                  <img
-                    src="/scale.svg"
-                    alt="scale icon"
-                    className={styles["scale-icon"]}
-                  />{" "}
-                  {weight} kg
-                </span>
-              </div>
-            </div>
-            <div className={styles["height-container"]}>
-              <div className={styles.height}>
-                <span className={styles["about-header"]}>Height</span>
-                <span className={styles["about-parameter"]}>
-                  <img
-                    src="/ruler.svg"
-                    alt="ruler icon"
-                    className={styles["ruler-icon"]}
-                  />
-                  {height} m
-                </span>
-              </div>
-            </div>
-            <div className={styles["moves-container"]}>
-              <div className={styles.moves}>
-                <span className={styles["about-header"]}>Moves</span>
-                {abilities}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles["pokemon-description"]}>
-          {
-            pokemonsDescriptionText.flavor_text_entries[
-              getPokemonDescription(pokemonId)
-            ].flavor_text
-          }
-        </div>
-        <div className={styles["base-stats-container"]}>
-          <div className={styles["base-stats-header"]}>
-            <p className={statsHeader}>Base stats </p>
-          </div>
-          <div className={styles["base-stats-parameters"]}>
-            <div className={statName}>{statsHeaders}</div>
-          </div>
-          <div className={styles["base-stats-parameters"]}>
-            <div className={styles["base-stat-score"]}>
-              {statsResultsNumbers}
-            </div>
-          </div>
-          <div className={styles["base-stats-parameters"]}>
-            <div className={styles["base-stat-visual-representation"]}>
-              {statsSliders}
-            </div>
-          </div>
-        </div>
-        <p className="copyright"> Design: Figma by Ricardo Schiniegoski</p>
-      </div>
+      <PokemonParameters
+        categories={categories}
+        aboutHeader={aboutHeader}
+        weight={weight}
+        height={height}
+        abilities={abilities}
+        statsHeader={statsHeader}
+        statsHeaders={statsHeaders}
+        statsResultsNumbers={statsResultsNumbers}
+        statsSliders={statsSliders}
+        statName={statName}
+        pokemonsDescriptionText={
+          pokemonsDescriptionText.flavor_text_entries[
+            getProperPokemonId(pokemonId)
+          ].flavor_text
+        }
+      />
     </div>
   );
 };
@@ -224,30 +201,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { name } = context.params;
   const apiUrl = publicApi;
 
-  const allPokemonsNamesAndIds = await getAllPokemonsNamesAndIds();
-  if (!allPokemonsNamesAndIds.includes(name)) {
+  try {
+    const pokemonsCharacteristic = await jsonFetch(`${apiUrl}/pokemon/${name}`);
+    const pokemonsDescriptionText = await jsonFetch(
+      `${apiUrl}/pokemon-species/${name}`
+    );
     return {
-      notFound: true,
+      props: {
+        pokemonsCharacteristic,
+        pokemonsDescriptionText,
+      },
     };
+  } catch (err) {
+    if (err instanceof RequestFailError) {
+      return {
+        notFound: true,
+      };
+    }
+    throw err;
   }
-
-  const pokemonsCharacteristic = await jsonFetch(`${apiUrl}/pokemon/${name}`);
-  const pageNotFound = pokemonsCharacteristic.status == 404;
-  const pokemonsDescriptionText = await jsonFetch(
-    `${apiUrl}/pokemon-species/${name}`
-  );
-
-  if (pageNotFound) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      pokemonsCharacteristic,
-      pokemonsDescriptionText,
-    },
-  };
 };
 export default Pokemon;

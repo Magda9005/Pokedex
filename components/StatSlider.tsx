@@ -1,9 +1,13 @@
-import { getStatValuePercentage } from "../.vscode/functions/helper_functions";
 import classNames from "classnames/bind";
-import styles from "./modules/statsSlider.module.css";
-import { StatsSliderProps } from "../.vscode/functions/interfaces";
+import styles from "./modules/statsSlider.module.scss";
 
 let className = classNames.bind(styles);
+
+interface StatsSliderProps {
+  statName: string;
+  statValue: number;
+  pokemonType: string;
+}
 
 const StatsSlider: React.FC<StatsSliderProps> = ({
   statName,
@@ -16,17 +20,30 @@ const StatsSlider: React.FC<StatsSliderProps> = ({
     statName
   );
 
+  const getStatValuePercentage = (
+    statName: string,
+    statValue: number
+  ): number => {
+    const maxValues = {
+      hp: 255,
+      atk: 190,
+      def: 230,
+      sdef: 230,
+      satk: 180,
+      spd: 200,
+    };
+
+    let maxStatValue: number = maxValues[statName];
+
+    return Math.round((statValue * 100) / maxStatValue);
+  };
+
   return (
     <div className={styles["line-container"]}>
-      <div className={slider}>
-        <style jsx>
-          {`
-            .${statName} {
-              width: ${getStatValuePercentage(statName, statValue)}%;
-            }
-          `}
-        </style>
-      </div>
+      <div
+        className={slider}
+        style={{ width: `${getStatValuePercentage(statName, statValue)}%` }}
+      ></div>
     </div>
   );
 };

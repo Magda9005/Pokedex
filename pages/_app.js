@@ -1,7 +1,15 @@
-import "../styles/style.css";
+import "../styles/style.scss";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <title>Pokedex</title>
+      </Head>
+      <Component {...pageProps} />;
+    </>
+  );
 }
 
 export default MyApp;
