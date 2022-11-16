@@ -1,0 +1,47 @@
+@import "../../styles/breakpoints";
+
+.elementContainerMoves {
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+  @include md {
+    height: 70px;
+  }
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+  color: black;
+}
+
+.container {
+  display: inline-block;
+  width: 30%;
+}
+.elementContainer {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+  border-right: 1px solid lightgrey;
+  height: 60px;
+
+  @include md {
+    height: 70px;
+  }
+}
+
+.aboutParameter {
+  font-size: 12px;
+}
+
+.aboutHeader {
+  padding-bottom: 4px;
+  font-size: 10px;
+  color: grey;
+
+  @include md {
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+}

@@ -1,0 +1,50 @@
+@import "../../styles/breakpoints";
+.chevronsContainer {
+  position: absolute;
+  width: 312px;
+  height: 32px;
+  left: 24px;
+  top: 180px;
+  display: flex;
+  justify-content: space-between;
+  width: 312px;
+  height: 32px;
+
+  @include md {
+    width: 550px;
+  }
+}
+
+.chevronsContainerFirstPokemon {
+  position: absolute;
+  width: 312px;
+  height: 32px;
+  left: 24px;
+  top: 180px;
+  display: flex;
+  justify-content: flex-end;
+  width: 312px;
+  height: 32px;
+
+  @include md {
+    width: 550px;
+  }
+}
+
+.chevronCard {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+}
+
+.chevronLeft {
+  background-image: URL("/chevron-left.svg");
+}
+
+.chevronRight {
+  background-image: URL("/chevron-right.svg");
+}

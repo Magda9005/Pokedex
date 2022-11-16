@@ -1,0 +1,14 @@
+@import "../../styles/breakpoints";
+
+.errorMessage {
+  width: 100%;
+  font-size: 15px;
+  margin-bottom: 7px;
+  margin-top: -6px;
+
+  @include md {
+    font-size: 24px;
+    margin-top: -22px;
+    margin-bottom: 10px;
+  }
+}
