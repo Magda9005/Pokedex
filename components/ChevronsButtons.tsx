@@ -3,6 +3,8 @@ import styles from "../components/modules/chevronsButtons.module.scss";
 import classNames from "classnames/bind";
 
 let className = classNames.bind(styles);
+const rightStyle = className(styles.chevronRight, styles.chevronCard);
+  const leftStyle = className(styles.chevronLeft, styles.chevronCard);
 
 interface ChevronsButtonsProps {
   pokemonId: number;
@@ -15,8 +17,7 @@ const ChevronsButtons: React.FC<ChevronsButtonsProps> = ({
   minPokemonId,
   maxPokemonId,
 }) => {
-  const chevronRight = className(styles.chevronRight, styles.chevronCard);
-  const chevronLeft = className(styles.chevronLeft, styles.chevronCard);
+  
 
   return (
     <>
@@ -29,12 +30,12 @@ const ChevronsButtons: React.FC<ChevronsButtonsProps> = ({
       >
         {pokemonId > minPokemonId && (
           <Link href={`${pokemonId - 1}`}>
-            <a role="link" className={chevronLeft}></a>
+            <a role="link" className={leftStyle}></a>
           </Link>
         )}
         {pokemonId < maxPokemonId && (
           <Link href={`${pokemonId + 1}`}>
-            <a role="link" className={chevronRight}></a>
+            <a role="link" className={rightStyle}></a>
           </Link>
         )}
       </div>

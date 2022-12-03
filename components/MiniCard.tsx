@@ -23,11 +23,11 @@ const MiniCard: React.FC<MiniCardProps> = ({
   pokemonsNamesAndTypes,
 }) => {
   const miniCardClass = className(
-    styles["mini-card-background"],
+    styles.miniCardBackground,
     `bgc-${pokemonsNamesAndTypes[pokemon.name]}`
   );
   const idClass = className(
-    styles["pokemon-id"],
+    styles.pokemonId,
     pokemonsNamesAndTypes[pokemon.name]
   );
 
@@ -35,9 +35,9 @@ const MiniCard: React.FC<MiniCardProps> = ({
     <>
       <Link href={`/pokemon/${pokemon.name}`}>
         <div key={pokemon.name} className={miniCardClass}>
-          <div className={styles["mini-card"]}>
+          <div className={styles.miniCard}>
             <span className={idClass}>#{pokemonId}</span>
-            <div className={styles["pokemon-mini-image-container"]}>
+            <div className={styles.pokemonMiniImageContainer}>
               <Image
                 src={pokemonImage + pokemonId + `.svg`}
                 priority={true}
@@ -47,7 +47,7 @@ const MiniCard: React.FC<MiniCardProps> = ({
               />
             </div>
           </div>
-          <div className={styles["mini-card-pokemon-name"]}>{pokemonName}</div>
+          <div className={styles.miniCardPokemonName}>{pokemonName}</div>
         </div>
       </Link>
     </>

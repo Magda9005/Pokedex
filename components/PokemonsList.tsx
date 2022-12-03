@@ -1,79 +1,58 @@
 import styles from "../components/modules/pokedexMainPage.module.scss";
-import Image from "next/image";
-import { Dispatch, SetStateAction } from "react";
 import Pagination from "./Pagination";
 import Copyright from "./Copyright";
 import { lastAccessiblePage } from "../constants";
 import { getPokemonId } from "../logic/data";
 import MiniCard from "./MiniCard";
 import PokemonSearchBar from "./SearchComponent";
+import Pokeball from "../components/PokeballMainPage";
+import ErrorMessage from "../components/ErrorMessage";
+import { Dispatch, SetStateAction } from "react";
+
+interface Pokemon {
+  name: string;
+  url: string;
+}
 
 interface PokemonsListProps {
-  result: { item: { name: string; url: string } }[];
-  route: string | number;
-  onSubmit: (e: React.SyntheticEvent) => void;
-  onChangeAutocomplete: Dispatch<SetStateAction<string | number>>;
-  onChangeTextField: (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => void;
-  action: string;
+  allNames: { name: string; url: string }[];
   displayError: boolean;
-  listElements: JSX.Element[];
-  url: string;
+  handleDisplayError: Dispatch<SetStateAction<boolean>>;
+  prevPageUrl: string;
   pageNumber: number;
-  nextPage: string;
+  nextPageUrl: string;
   pokemons: { name: string; url: string }[];
   pokemonsNamesAndTypes: { string: string };
-  pokemonImage: string;
+  pokemonImageBaseUrl: string;
 }
 
 const PokemonsList: React.FC<PokemonsListProps> = ({
-  result,
-  route,
-  onSubmit,
-  onChangeAutocomplete,
-  onChangeTextField,
-  action,
+  allNames,
   displayError,
-  url,
+  handleDisplayError,
+  prevPageUrl,
   pageNumber,
-  nextPage,
+  nextPageUrl,
   pokemons,
   pokemonsNamesAndTypes,
-  pokemonImage,
+  pokemonImageBaseUrl,
 }) => {
   const hasPrev = pageNumber > 1;
   const hasNext = pageNumber <= lastAccessiblePage;
-
   return (
-    <div className={styles["pokemon-list-container"]}>
-      <div className={styles["pokedex-title"]}>
-        <Image
-          src="/pokeball-main-page.svg"
-          alt="pokeball-logo"
-          priority={true}
-          layout="responsive"
-          width="328"
-          height="32"
-        />
+    <div className={styles.pokemonListContainer}>
+      <div className={styles.pokedexTitle}>
+        <Pokeball />
       </div>
-      <div className={styles["search-input"]}>
+      <div className={styles.searchInput}>
         <PokemonSearchBar
-          result={result}
-          route={route}
-          onSubmit={onSubmit}
-          onChangeAutocomplete={onChangeAutocomplete}
-          onChangeTextField={onChangeTextField}
-          action={action}
+          allNames={allNames}
+          displayError={displayError}
+          handleDisplayError={handleDisplayError}
         />
       </div>
-      <div className={styles["pokemon-cards-container"]}>
-        {displayError && (
-          <div className={styles["error-message"]}>
-            {" "}
-            Sorry, no Pokémon matched your search!
-          </div>
-        )}
+      <div className={styles.pokemonCardsContainer}>
+        {displayError && <ErrorMessage />}
 
         {pokemons.map((pokemon) => {
           const pokemonName: string =
@@ -84,7 +63,7 @@ const PokemonsList: React.FC<PokemonsListProps> = ({
             <MiniCard
               pokemon={pokemon}
               pokemonId={pokemonId}
-              pokemonImage={pokemonImage}
+              pokemonImage={pokemonImageBaseUrl}
               pokemonName={pokemonName}
               pokemonsNamesAndTypes={pokemonsNamesAndTypes}
             />
@@ -94,8 +73,8 @@ const PokemonsList: React.FC<PokemonsListProps> = ({
       <Pagination
         hasPrev={hasPrev}
         hasNext={hasNext}
-        url={url}
-        nextPage={nextPage}
+        prevUrl={prevPageUrl}
+        nextUrl={nextPageUrl}
       />
       <Copyright />
     </div>

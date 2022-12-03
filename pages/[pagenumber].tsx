@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";
-import { getPageUrl, getPreviousPage } from "../logic/urls";
-import { jsonFetch } from "../logic/fetch";
-import { getAllPokemons } from "../logic/fetch";
+import { getPageUrl } from "../logic/urls";
+import { getPokemonsWithTypes, cachedJsonFetch } from "../api/fetch";
+import { getAllPokemons } from "../api/fetch";
 import { GetServerSideProps } from "next";
-import { publicApi } from "../.vscode/functions/env_variables";
+import { publicApi } from "../envVariables";
 import { lastAccessiblePage } from "../constants";
 import PokemonPage from "../components/PokemonPage";
+import Head from "next/head";
 
 interface PokemonsPageProps {
   pokemons: { name: string; url: string }[];
@@ -19,14 +20,18 @@ const PokemonsPage: React.FC<PokemonsPageProps> = ({
   allNames,
 }) => {
   const router = useRouter();
-
   return (
-    <PokemonPage
-      pageNr={router.query.pagenumber}
-      pokemons={pokemons}
-      pokemonsWithTypes={pokemonsWithTypes}
-      allNames={allNames}
-    />
+    <>
+      <Head>
+        <title>Pokedex </title>
+      </Head>
+      <PokemonPage
+        pageNr={router.query.pagenumber}
+        pokemons={pokemons}
+        pokemonsWithTypes={pokemonsWithTypes}
+        allNames={allNames}
+      />
+    </>
   );
 };
 
@@ -39,16 +44,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       notFound: true,
     };
   }
-  let URL = getPageUrl(pagenumber);
-  const data = await jsonFetch(URL);
+  const url = getPageUrl(pagenumber);
+  const data = await cachedJsonFetch(url);
   const pokemons = data.results;
   const allNames = await getAllPokemons();
-
-  const pokemonsWithTypes = [];
-  for (const { name } of pokemons) {
-    const data = await jsonFetch(`${apiUrl}/pokemon/${name}`);
-    pokemonsWithTypes.push(data);
-  }
+  const pokemonsWithTypes = await getPokemonsWithTypes(pokemons, apiUrl);
 
   return {
     props: {

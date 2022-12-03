@@ -4,7 +4,7 @@ export const getPokemonId = (url: string): number => {
   return Number(array[0].slice(1));
 };
 
-//some of the Pokemons had  too long description or description was in other language than english so I needed to extract different description from the object
+// some of the Pokemons had  too long description or description was in other language than english so I needed to extract different description from the object
 export const getProperPokemonId = (pokemonId: number): number => {
   const pokemonsIds: number[] = [
     41, 33, 40, 45, 71, 79, 153, 170, 279, 476, 500, 504, 588, 569, 567, 556,
@@ -21,4 +21,19 @@ export const getProperPokemonId = (pokemonId: number): number => {
   }
 
   return id;
+};
+
+export const checkIfPokemonNameOrIdExists = (
+  allPokemons: { name: string; url: string }[],
+  searchedPokemonNameOrId: string
+) => {
+  const pokemonsNamesAndIds = [];
+  for (let pokemon of allPokemons) {
+    pokemonsNamesAndIds.push(pokemon.name);
+    pokemonsNamesAndIds.push(getPokemonId(pokemon.url).toString());
+  }
+  if (!pokemonsNamesAndIds.includes(searchedPokemonNameOrId)) {
+    return false;
+  }
+  return true;
 };

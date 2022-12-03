@@ -2,12 +2,12 @@ import Link from "next/link";
 import styles from "../components/modules/errorPage.module.scss";
 
 const NotFound = () => (
-  <div className={styles["error-page"]}>
-    <h1 className={styles["error-page-main-title"]}> 404 </h1>
-    <h2 className={styles["error-page-subtitle"]}>Not found!</h2>
+  <div className={styles.errorPage}>
+    <h1 className={styles.errorPageMainTitle}> 404 </h1>
+    <h2 className={styles.errorPageSubtitle}>Not found!</h2>
     <p>Sorry,we can't find what you're looking for.</p>
     <Link href={`/pokedex`}>
-      <button className={styles["go-back-home-btn"]} role="button">
+      <button className={styles.goBackHomeBtn} role="button">
         Go back home
       </button>
     </Link>

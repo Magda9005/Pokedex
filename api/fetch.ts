@@ -1,4 +1,4 @@
-import { storageApi } from "../env_variables";
+import { storageApi } from "../envVariables";
 
 let storage = null;
 

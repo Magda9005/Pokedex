@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const Pokeball: React.FC = () => (
-  <>
+  
     <Image
       src="/pokeball-main-page.svg"
       alt="pokeball-logo"
@@ -10,7 +10,7 @@ const Pokeball: React.FC = () => (
       width="328"
       height="32"
     />
-  </>
+
 );
 
 export default Pokeball;

@@ -23,6 +23,15 @@ export const fuzzySearchResults = (
   };
 
   const fuse = useNewFuse(allNames, options).fuse;
-  console.log(fuse.search(text).slice(0, 3));
   return fuse.search(text).slice(0, 3);
 };
+
+
+const values=<T,U>(arg1:T,arg2:U)=>{
+  return{
+    value1:arg1,
+    value2:arg2
+  }
+}
+
+const getValues=values('a',2)

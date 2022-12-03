@@ -1,6 +1,6 @@
-import styles from "./modules/aboutElement.module.scss";
+import styles from "./modules/aboutSection.module.scss";
 
-interface AboutElementProps {
+interface AboutSectionProps {
   moves: boolean;
   parameterName: string;
   abilities?: string[];
@@ -9,7 +9,7 @@ interface AboutElementProps {
   alt?: string;
 }
 
-const AboutElement: React.FC<AboutElementProps> = ({
+const AboutSection: React.FC<AboutSectionProps> = ({
   moves,
   parameterName,
   abilities,
@@ -18,7 +18,6 @@ const AboutElement: React.FC<AboutElementProps> = ({
   alt,
 }) => {
   return (
-    <>
       <div className={styles.container}>
         <div
           className={
@@ -36,8 +35,7 @@ const AboutElement: React.FC<AboutElementProps> = ({
           )}
         </div>
       </div>
-    </>
   );
 };
 
-export default AboutElement;
+export default AboutSection;

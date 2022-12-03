@@ -1,10 +1,10 @@
 @import "../../styles/breakpoints";
 
-.about-parameter {
+.aboutParameter {
   font-size: 12px;
 }
 
-.parameters-container {
+.parametersContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -24,7 +24,7 @@
   }
 }
 
-.type-container {
+.typeContainer {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -38,7 +38,7 @@
   }
 }
 
-.about-section {
+.aboutSection {
   text-align: center;
   margin-top: 30px;
   width: 100%;
@@ -46,7 +46,10 @@
   @include md {
     margin-top: 65px;
   }
-  .about-main-header {
+  @include lg {
+    margin-top: 80px;
+  }
+  .aboutMainHeader {
     margin-bottom: 0px;
     font-size: 18px;
     font-weight: bold;
@@ -58,61 +61,7 @@
   }
 }
 
-.weight-container,
-.height-container {
-  display: inline-block;
-  width: 30%;
-}
-.weight {
-  display: flex;
-  flex-direction: column;
-  padding-right: 10px;
-  border-right: 1px solid lightgrey;
-  height: 60px;
-
-  @include md {
-    height: 70px;
-  }
-}
-.height {
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid lightgrey;
-  height: 60px;
-  @include md {
-    height: 70px;
-  }
-}
-.about-header {
-  padding-bottom: 4px;
-  font-size: 10px;
-  color: grey;
-
-  @include md {
-    font-size: 14px;
-    padding-bottom: 10px;
-  }
-}
-.scale-icon,
-.ruler-icon {
-  width: 15px;
-  height: 15px;
-  color: black;
-}
-.moves-container {
-  display: inline-block;
-  width: 35%;
-}
-.moves {
-  display: flex;
-  flex-direction: column;
-  height: 60px;
-  @include md {
-    height: 70px;
-  }
-}
-
-.pokemon-description {
+.pokemonDescription {
   padding-top: 5px;
   font-size: 10px;
 
@@ -120,11 +69,11 @@
     font-size: 17px;
   }
 }
-.base-stats-container {
+.baseStatsContainer {
   width: 100%;
 }
 
-.base-stats-header {
+.baseStatsHeader {
   text-align: center;
   font-size: 14px;
   font-weight: bold;
@@ -135,19 +84,15 @@
     font-size: 22px;
   }
 }
-.stats-header {
+.statsHeader {
   margin-bottom: 0px;
 
   @include md {
     margin-top: 15px;
   }
 }
-.base-stats-parameters {
-  display: inline-block;
-  margin-top: 0;
-}
 
-.base-stat-name {
+.baseStatName {
   display: flex;
   flex-direction: column;
   border-right: 1px solid lightgrey;
@@ -160,7 +105,7 @@
   }
 }
 
-.base-stat-score {
+.baseStatScore {
   display: flex;
   flex-direction: column;
   font-size: 12px;
@@ -172,7 +117,7 @@
   }
 }
 
-.base-stat-visual-representation {
+.baseStatVisualRepresentation {
   display: flex;
   flex-direction: column;
   padding-left: 10px;

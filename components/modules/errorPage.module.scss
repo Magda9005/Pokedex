@@ -1,26 +1,25 @@
-.error-page {
+.errorPage {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+.errorPageMainTitle {
+  color: darkgrey;
+  font-size: 100px;
+  margin-bottom: 0px;
+}
 
-  .error-page-main-title {
-    color: darkgrey;
-    font-size: 100px;
-    margin-bottom: 0px;
-  }
+.errorPageSubtitle {
+  margin-top: 0px;
+}
 
-  .error-page-subtitle {
-    margin-top: 0px;
-  }
-
-  .go-back-home-btn {
-    border-radius: 3px;
-    padding: 5px;
-    width: 50%;
-    height: 30px;
-    cursor: pointer;
-    margin-top: 15px;
-  }
+.goBackHomeBtn {
+  border-radius: 3px;
+  padding: 5px;
+  width: 50%;
+  height: 30px;
+  cursor: pointer;
+  margin-top: 15px;
 }

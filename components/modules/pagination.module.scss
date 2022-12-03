@@ -1,6 +1,6 @@
 @import "../../styles/breakpoints";
 
-.next-previous-page-area {
+.nextPreviousPageArea {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -9,8 +9,8 @@
   @include xl {
     margin-top: 0px;
   }
-  .previous-icon,
-  .next-icon {
+  .previousIcon,
+  .nextIcon {
     width: 20px;
     height: 20px;
 
@@ -30,7 +30,7 @@
   }
 }
 
-.next-prev-link {
+.nextPrevLink {
   width: 30px;
   height: 30px;
   z-index: 1;
@@ -47,18 +47,7 @@
   }
 }
 
-.next-btn-area {
-  margin-top: 15px;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-
-  @include md {
-    margin-top: 0px;
-  }
-}
-
-.next-button-area {
+.nextButtonArea {
   display: flex;
   justify-content: flex-end;
   width: 100%;

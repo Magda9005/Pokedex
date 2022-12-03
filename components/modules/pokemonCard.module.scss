@@ -1,6 +1,6 @@
 @import "../../styles/breakpoints";
 
-.about-parameter {
+.aboutParameter {
   font-size: 12px;
 }
 
@@ -31,7 +31,7 @@
     height: 900px;
   }
 }
-.pokemon-name {
+.pokemonName {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -57,7 +57,7 @@
   align-items: center;
 }
 
-.arrow-left {
+.arrowLeft {
   background-image: url("/arrow-left.svg");
   background-color: transparent;
   border: none;
@@ -67,7 +67,7 @@
   cursor: pointer;
 }
 
-.pokeball-container {
+.pokeballContainer {
   position: absolute;
   width: 208px;
   height: 208px;
@@ -80,7 +80,7 @@
     width: 300px;
   }
 }
-.image-container {
+.imageContainer {
   position: absolute;
   left: 80px;
   top: 70px;
@@ -94,57 +94,7 @@
   }
 }
 
-.chevrons-container {
-  position: absolute;
-  width: 312px;
-  height: 32px;
-  left: 24px;
-  top: 180px;
-  display: flex;
-  justify-content: space-between;
-  width: 312px;
-  height: 32px;
-
-  @include md {
-    width: 550px;
-  }
-}
-
-.chevrons-container-firstPokemon {
-  position: absolute;
-  width: 312px;
-  height: 32px;
-  left: 24px;
-  top: 180px;
-  display: flex;
-  justify-content: flex-end;
-  width: 312px;
-  height: 32px;
-
-  @include md {
-    width: 550px;
-  }
-}
-
-.chevron-card {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  border: none;
-}
-
-.chevron-left {
-  background-image: URL("/chevron-left.svg");
-}
-
-.chevron-right {
-  background-image: URL("/chevron-right.svg");
-}
-
-.parameters-container {
+.parametersContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -163,7 +113,7 @@
     height: 596px;
   }
 }
-.type-container {
+.typeContainer {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -177,7 +127,7 @@
   }
 }
 
-.about-section {
+.aboutSection {
   text-align: center;
   margin-top: 30px;
   width: 100%;
@@ -185,7 +135,7 @@
   @include md {
     margin-top: 65px;
   }
-  .about-main-header {
+  .aboutMainHeader {
     margin-bottom: 0px;
     font-size: 18px;
     font-weight: bold;
@@ -196,8 +146,8 @@
     }
   }
 }
-.weight-container,
-.height-container {
+.weightContainer,
+.heightContainer {
   display: inline-block;
   width: 30%;
 }
@@ -221,7 +171,7 @@
     height: 70px;
   }
 }
-.about-header {
+.aboutHeader {
   padding-bottom: 4px;
   font-size: 10px;
   color: grey;
@@ -231,13 +181,13 @@
     padding-bottom: 10px;
   }
 }
-.scale-icon,
-.ruler-icon {
+.scaleIcon,
+.rulerIcon {
   width: 15px;
   height: 15px;
   color: black;
 }
-.moves-container {
+.movesContainer {
   display: inline-block;
   width: 35%;
 }
@@ -250,7 +200,7 @@
   }
 }
 
-.pokemon-description {
+.pokemonDescription {
   padding-top: 5px;
   font-size: 10px;
 
@@ -258,11 +208,11 @@
     font-size: 17px;
   }
 }
-.base-stats-container {
+.baseStatsContainer {
   width: 100%;
 }
 
-.base-stats-header {
+.baseStatsHeader {
   text-align: center;
   font-size: 18px;
   font-weight: bold;
@@ -272,7 +222,7 @@
     margin-bottom: 20px;
     font-size: 22px;
   }
-  .stats-header {
+  .statsHeader {
     margin-bottom: 0px;
     margin-top: 0px;
 
@@ -281,11 +231,11 @@
     }
   }
 }
-.base-stats-parameters {
+.baseStatsParameters {
   display: inline-block;
 }
 
-.base-stat-name {
+.baseStatName {
   display: flex;
   flex-direction: column;
   border-right: 1px solid lightgrey;
@@ -298,7 +248,7 @@
   }
 }
 
-.base-stat-score {
+.baseStatScore {
   display: flex;
   flex-direction: column;
   font-size: 12px;
@@ -310,7 +260,7 @@
   }
 }
 
-.base-stat-visual-representation {
+.baseStatVisualRepresentation {
   display: flex;
   flex-direction: column;
   padding-left: 10px;

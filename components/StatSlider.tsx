@@ -9,6 +9,24 @@ interface StatsSliderProps {
   pokemonType: string;
 }
 
+const getStatValuePercentage = (
+  statName: string,
+  statValue: number
+): number => {
+  const maxValues = {
+    hp: 255,
+    atk: 190,
+    def: 230,
+    sdef: 230,
+    satk: 180,
+    spd: 200,
+  };
+
+  let maxStatValue: number = maxValues[statName];
+
+  return Math.round((statValue * 100) / maxStatValue);
+};
+
 const StatsSlider: React.FC<StatsSliderProps> = ({
   statName,
   statValue,
@@ -16,30 +34,12 @@ const StatsSlider: React.FC<StatsSliderProps> = ({
 }) => {
   const slider = className(
     `bgc-${pokemonType}`,
-    styles["colored-result"],
+    styles.coloredResult,
     statName
   );
 
-  const getStatValuePercentage = (
-    statName: string,
-    statValue: number
-  ): number => {
-    const maxValues = {
-      hp: 255,
-      atk: 190,
-      def: 230,
-      sdef: 230,
-      satk: 180,
-      spd: 200,
-    };
-
-    let maxStatValue: number = maxValues[statName];
-
-    return Math.round((statValue * 100) / maxStatValue);
-  };
-
   return (
-    <div className={styles["line-container"]}>
+    <div className={styles.lineContainer}>
       <div
         className={slider}
         style={{ width: `${getStatValuePercentage(statName, statValue)}%` }}

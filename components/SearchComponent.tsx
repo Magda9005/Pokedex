@@ -1,63 +1,81 @@
 import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import React from "react";
 import textfieldStyle from "../textfieldMuiStyle";
+import { fuzzySearchResults } from "../logic/search";
+import { useState } from "react";
+import { checkIfPokemonNameOrIdExists } from "../logic/data";
+import { Dispatch, SetStateAction } from "react";
 
 interface PokemonSearchBarProps {
-  result: {
-    item: {
-      name: string;
-    };
-  }[];
-  route: string | number | null;
-  onSubmit: (e: React.SyntheticEvent) => void;
-  onChangeAutocomplete: (value: string | number) => void;
-  onChangeTextField: (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ) => void;
-  action: string;
+  allNames: { name: string; url: string }[];
+  displayError: boolean;
+  handleDisplayError: Dispatch<SetStateAction<boolean>>;
 }
 
 const PokemonSearchBar: React.FC<PokemonSearchBarProps> = ({
-  result,
-  route,
-  onSubmit,
-  onChangeAutocomplete,
-  onChangeTextField,
-  action,
+  allNames,
+  displayError,
+  handleDisplayError,
 }) => {
+  const [route, setRoute] = useState<string>();
+  const [text, setText] = useState("");
+
+  const handlePokemonSearch = setRoute;
+
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    if (
+      route == null ||
+      !checkIfPokemonNameOrIdExists(allNames, route.toLowerCase())
+    ) {
+      e.preventDefault();
+      return handleDisplayError(true);
+    }
+    handleDisplayError(false);
+  };
+
+  const handleOnChangeTextField = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    if (e.target.value === "") {
+      handleDisplayError(false);
+    }
+    setText(e.target.value);
+  };
+
   return (
-    <form role="form" action={action} method="GET" onSubmit={onSubmit}>
-      <Stack spacing={2}>
-        <Autocomplete
-          role="searchbox"
-          aria-autocomplete="list"
-          id="free-solo-demo"
-          filterOptions={(x) => x}
-          freeSolo="true"
-          options={result.map((r) => {
-            return r.item.name[0].toUpperCase() + r.item.name.substring(1);
-          })}
-          onChange={(e, value) => {
-            onChangeAutocomplete(value);
-          }}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              aria-placeholder="Pokémon Name or Id"
-              label="Pokémon Name or Id"
-              style={{ backgroundColor: "white" }}
-              value={route}
-              size="small"
-              sx={textfieldStyle}
-              onChange={(e) => {
-                onChangeTextField(e);
-              }}
-            />
-          )}
-        />
-      </Stack>
+    <form
+      role="form"
+      action={!displayError && `/pokemon/${route}`.toLowerCase()}
+      method="GET"
+      onSubmit={(e) => handleSubmit(e)}
+    >
+      <Autocomplete
+        role="searchbox"
+        aria-autocomplete="list"
+        id="free-solo-demo"
+        filterOptions={(x) => x}
+        freeSolo={true}
+        options={fuzzySearchResults(allNames, text).map((r) => {
+          return r.item.name[0].toUpperCase() + r.item.name.substring(1);
+        })}
+        onChange={(e, value) => {
+          handlePokemonSearch(value);
+        }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            aria-placeholder="Pokémon Name or Id"
+            label="Pokémon Name or Id"
+            style={{ backgroundColor: "white" }}
+            size="small"
+            sx={textfieldStyle}
+            onChange={(e) => {
+              handleOnChangeTextField(e);
+            }}
+          />
+        )}
+      />
     </form>
   );
 };

@@ -21,7 +21,7 @@ const textfieldStyle = {
   },
 
   "& label": {
-    marginTop: "-1%",
+    marginTop: "-0.5%",
     fontSize: "1.3rem",
   },
 };

@@ -4,39 +4,37 @@ import styles from "./modules/pagination.module.scss";
 interface PaginationProps {
   hasPrev: boolean;
   hasNext: boolean;
-  url: string;
-  nextPage: string;
+  prevUrl: string;
+  nextUrl: string;
 }
 
 const Pagination: React.FC<PaginationProps> = ({
   hasPrev,
   hasNext,
-  url,
-  nextPage,
+  prevUrl,
+  nextUrl,
 }) => (
   <div
-    className={
-      hasPrev ? styles["next-previous-page-area"] : styles["next-button-area"]
-    }
+    className={hasPrev ? styles.nextPreviousPageArea : styles.nextButtonArea}
   >
     {hasPrev && (
-      <Link href={url}>
-        <a role="link" className={styles["next-prev-link"]}>
+      <Link href={prevUrl}>
+        <a role="link" className={styles.nextPrevLink}>
           {" "}
           <img
             src="/chevron-left-black.svg"
-            className={styles["previous-icon"]}
+            className={styles.previousIcon}
           />{" "}
         </a>
       </Link>
     )}
     {hasNext && (
-      <Link href={nextPage}>
-        <a role="link" className={styles["next-prev-link"]}>
+      <Link href={nextUrl}>
+        <a role="link" className={styles.nextPrevLink}>
           {" "}
           <img
             src="/chevron-right-black.svg"
-            className={styles["next-icon"]}
+            className={styles.nextIcon}
           />{" "}
         </a>
       </Link>

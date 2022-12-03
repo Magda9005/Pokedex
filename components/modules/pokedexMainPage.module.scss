@@ -1,6 +1,6 @@
 @import "../../styles/breakpoints";
 
-.pokemon-list-container {
+.pokemonListContainer {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -20,19 +20,7 @@
   }
 }
 
-.search-icon {
-  position: absolute;
-  margin-right: 4px;
-  top: 62px;
-  right: 290px;
-}
-
-.searchbar {
-  width: 328px;
-  height: 24px;
-}
-
-.pokedex-title {
+.pokedexTitle {
   display: block;
   width: 328px;
   height: 32px;
@@ -51,7 +39,7 @@
   }
 }
 
-.pokemon-cards-container {
+.pokemonCardsContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -69,19 +57,6 @@
   cursor: pointer;
 }
 
-.error-message {
-  width: 100%;
-  font-size: 15px;
-  margin-bottom: 7px;
-  margin-top: -6px;
-
-  @include md {
-    font-size: 24px;
-    margin-top: -22px;
-    margin-bottom: 10px;
-  }
-}
-
-.search-input {
+.searchInput {
   width: 100%;
 }
