@@ -1,7 +1,7 @@
 import styles from "./modules/pokemonParameters.module.scss";
 import Copyright from "./Copyright";
 import BaseStatItem from "./BaseStatItem";
-import AboutElement from "./AboutElement";
+import AboutElement from "./AboutSection";
 
 const PokemonParameters = ({
   categories,
