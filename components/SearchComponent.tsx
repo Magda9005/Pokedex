@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import React from "react";
-import textfieldStyle from "../textfieldMuiStyle";
+import textfieldStyle from "../utils/textfieldMuiStyle";
 import { fuzzySearchResults } from "../logic/search";
 import { useState } from "react";
 import { checkIfPokemonNameOrIdExists } from "../logic/data";

@@ -32,25 +32,23 @@ const MiniCard: React.FC<MiniCardProps> = ({
   );
 
   return (
-    <>
-      <Link href={`/pokemon/${pokemon.name}`}>
-        <div key={pokemon.name} className={miniCardClass}>
-          <div className={styles.miniCard}>
-            <span className={idClass}>#{pokemonId}</span>
-            <div className={styles.pokemonMiniImageContainer}>
-              <Image
-                src={pokemonImage + pokemonId + `.svg`}
-                priority={true}
-                layout="responsive"
-                width="50"
-                height="50"
-              />
-            </div>
+    <Link href={`/pokemon/${pokemon.name}`}>
+      <div key={pokemon.name} className={miniCardClass}>
+        <div className={styles.miniCard}>
+          <span className={idClass}>#{pokemonId}</span>
+          <div className={styles.pokemonMiniImageContainer}>
+            <Image
+              src={pokemonImage + pokemonId + `.svg`}
+              priority={true}
+              layout="responsive"
+              width="50"
+              height="50"
+            />
           </div>
-          <div className={styles.miniCardPokemonName}>{pokemonName}</div>
         </div>
-      </Link>
-    </>
+        <div className={styles.miniCardPokemonName}>{pokemonName}</div>
+      </div>
+    </Link>
   );
 };
 

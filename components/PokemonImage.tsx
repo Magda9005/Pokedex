@@ -15,17 +15,15 @@ const PokemonImage: React.FC<PokemonImageProps> = ({
   width,
 }) => {
   return (
-    <>
-      <div className={styles.imageContainer}>
-        <Image
-          src={src}
-          layout="responsive"
-          width={width}
-          height={height}
-          alt={alt}
-        />
-      </div>
-    </>
+    <div className={styles.imageContainer}>
+      <Image
+        src={src}
+        layout="responsive"
+        width={width}
+        height={height}
+        alt={alt}
+      />
+    </div>
   );
 };
 

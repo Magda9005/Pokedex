@@ -1,7 +1,7 @@
 import styles from "../components/modules/pokedexMainPage.module.scss";
 import Pagination from "./Pagination";
 import Copyright from "./Copyright";
-import { lastAccessiblePage } from "../constants";
+import { lastAccessiblePage } from "../utils/constants";
 import { getPokemonId } from "../logic/data";
 import MiniCard from "./MiniCard";
 import PokemonSearchBar from "./SearchComponent";

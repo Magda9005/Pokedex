@@ -4,7 +4,7 @@ import { getPokemonsWithTypes, cachedJsonFetch } from "../api/fetch";
 import { getAllPokemons } from "../api/fetch";
 import { GetServerSideProps } from "next";
 import { publicApi } from "../envVariables";
-import { lastAccessiblePage } from "../constants";
+import { lastAccessiblePage } from "../utils/constants";
 import PokemonPage from "../components/PokemonPage";
 import Head from "next/head";
 

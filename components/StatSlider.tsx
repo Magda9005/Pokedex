@@ -9,7 +9,7 @@ interface StatsSliderProps {
   pokemonType: string;
 }
 
-const getStatValuePercentage = (
+export const getStatValuePercentage = (
   statName: string,
   statValue: number
 ): number => {

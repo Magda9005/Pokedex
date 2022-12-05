@@ -1,4 +1,4 @@
-import { getPokemonId, getProperPokemonId } from "../../logic/data";
+import { getPokemonId, getProperDescriptionOfPokemon } from "../../logic/data";
 import { cachedJsonFetch, RequestFailError } from "../../api/fetch";
 import Link from "next/link";
 import { useCookie } from "react-use";
@@ -12,7 +12,7 @@ import Head from "next/head";
 import Pokeball from "../../components/PokeballOnPokemonCard";
 import PokemonImage from "../../components/PokemonImage";
 import ChevronsButtons from "../../components/ChevronsButtons";
-import { minPokemonId, maxPokemonId } from "../../constants";
+import { minPokemonId, maxPokemonId } from "../../utils/constants";
 
 let className = classNames.bind(styles);
 
@@ -167,7 +167,7 @@ const Pokemon: React.FC<PokemonProps> = ({
           statName={statName}
           pokemonsDescriptionText={
             pokemonsDescriptionText.flavor_text_entries[
-              getProperPokemonId(pokemonId)
+              getProperDescriptionOfPokemon(pokemonId)
             ].flavor_text
           }
         />

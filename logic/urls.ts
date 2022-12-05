@@ -1,11 +1,12 @@
 import { publicApi } from "../envVariables";
-import { pokemonsPerPage } from "../constants";
+import { pokemonsPerPage } from "../utils/constants";
 
 export const getPageUrl = (pagenumber: number): string => {
   const apiUrl: string = publicApi;
 
-  return `${apiUrl}/pokemon?offset=${pokemonsPerPage * (pagenumber - 1)
-    }&limit=${pokemonsPerPage}`;
+  return `${apiUrl}/pokemon?offset=${
+    pokemonsPerPage * (pagenumber - 1)
+  }&limit=${pokemonsPerPage}`;
 };
 
 export function getPreviousPage(pagenumber: number): string {

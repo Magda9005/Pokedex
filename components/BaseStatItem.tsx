@@ -10,11 +10,9 @@ const BaseStatItem: React.FC<BaseStatItemProps> = ({
   elementName,
 }) => {
   return (
-    <>
-      <div className={styles.baseStatsParameters}>
-        <div className={elementClass}>{elementName}</div>
-      </div>
-    </>
+    <div className={styles.baseStatsParameters}>
+      <div className={elementClass}>{elementName}</div>
+    </div>
   );
 };
 

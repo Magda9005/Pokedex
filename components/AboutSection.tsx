@@ -18,23 +18,23 @@ const AboutSection: React.FC<AboutSectionProps> = ({
   alt,
 }) => {
   return (
-      <div className={styles.container}>
-        <div
-          className={
-            moves ? styles.elementContainerMoves : styles.elementContainer
-          }
-        >
-          <span className={styles.aboutHeader}>{parameterName}</span>
-          {moves ? (
-            abilities
-          ) : (
-            <span className={styles.aboutParameter}>
-              <img src={src} alt={alt} className={styles.icon} />{" "}
-              {parameterValue} kg
-            </span>
-          )}
-        </div>
+    <div className={styles.container}>
+      <div
+        className={
+          moves ? styles.elementContainerMoves : styles.elementContainer
+        }
+      >
+        <span className={styles.aboutHeader}>{parameterName}</span>
+        {moves ? (
+          abilities
+        ) : (
+          <span className={styles.aboutParameter}>
+            <img src={src} alt={alt} className={styles.icon} /> {parameterValue}{" "}
+            kg
+          </span>
+        )}
       </div>
+    </div>
   );
 };
 
