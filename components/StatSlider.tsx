@@ -9,19 +9,19 @@ interface StatsSliderProps {
   pokemonType: string;
 }
 
+const maxValues = {
+  hp: 255,
+  atk: 190,
+  def: 230,
+  sdef: 230,
+  satk: 180,
+  spd: 200,
+};
+
 export const getStatValuePercentage = (
   statName: string,
   statValue: number
 ): number => {
-  const maxValues = {
-    hp: 255,
-    atk: 190,
-    def: 230,
-    sdef: 230,
-    satk: 180,
-    spd: 200,
-  };
-
   let maxStatValue: number = maxValues[statName];
 
   return Math.round((statValue * 100) / maxStatValue);

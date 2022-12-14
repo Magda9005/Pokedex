@@ -9,9 +9,9 @@ import { publicApi, pokemonImgApi } from "../../envVariables";
 import classNames from "classnames/bind";
 import styles from "../../components/modules/pokemonCard.module.scss";
 import Head from "next/head";
-import Pokeball from "../../components/PokeballOnPokemonCard";
-import PokemonImage from "../../components/PokemonImage";
-import ChevronsButtons from "../../components/ChevronsButtons";
+import Pokeball from "../../components/pokeballImages/PokeballOnPokemonCard";
+import PokemonImage from "../../components/pokeballImages/PokemonImage";
+import ChevronButtons from "../../components/ChevronButtons";
 import { minPokemonId, maxPokemonId } from "../../utils/constants";
 
 let className = classNames.bind(styles);
@@ -149,7 +149,7 @@ const Pokemon: React.FC<PokemonProps> = ({
           width={200}
           height={200}
         />
-        <ChevronsButtons
+        <ChevronButtons
           pokemonId={pokemonId}
           minPokemonId={minPokemonId}
           maxPokemonId={maxPokemonId}

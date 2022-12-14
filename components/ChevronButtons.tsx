@@ -6,13 +6,13 @@ let className = classNames.bind(styles);
 const rightStyle = className(styles.chevronRight, styles.chevronCard);
 const leftStyle = className(styles.chevronLeft, styles.chevronCard);
 
-interface ChevronsButtonsProps {
+interface ChevronButtonsProps {
   pokemonId: number;
   minPokemonId: number;
   maxPokemonId: number;
 }
 
-const ChevronsButtons: React.FC<ChevronsButtonsProps> = ({
+const ChevronButtons: React.FC<ChevronButtonsProps> = ({
   pokemonId,
   minPokemonId,
   maxPokemonId,
@@ -39,4 +39,4 @@ const ChevronsButtons: React.FC<ChevronsButtonsProps> = ({
   );
 };
 
-export default ChevronsButtons;
+export default ChevronButtons;

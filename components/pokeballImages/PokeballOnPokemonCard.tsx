@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../components/modules/pokemonCard.module.scss";
+import styles from "../modules/pokemonCard.module.scss";
 
 const Pokeball = () => (
   <div className={styles.pokeballContainer}>
