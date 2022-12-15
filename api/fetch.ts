@@ -20,8 +20,7 @@ export async function getAllPokemons() {
 
 export class RequestFailError extends Error {
   constructor(response: Response) {
-    super(response.status);
-    this.message = response.status;
+    super('Request failed',{cause:response.status});
   }
 }
 
