@@ -1,11 +1,13 @@
 
 # Pokédex 
 
+Application using server-side rendering (SSR), created in React and Next.js, using Typescript.
+
 ## About the project
 
 Pokédex app provides you with the informations about the various species of Pokémons.
 - you can either click on the Pokémon's card to display more informations about it or use a search bar and search by Pokémon's name or id
-- fuzzy search will help you to find the Pokémon even when the search results are misspelled
+- fuzzy search will help you to find the Pokémon even when the search result is misspelled
 
 <img width="350" alt="image" src="https://user-images.githubusercontent.com/92581964/207821111-3bac5cce-66b5-45ef-9d46-248457b0ae5f.png">
 
@@ -15,7 +17,7 @@ Pokédex app provides you with the informations about the various species of Pok
 
 ## How to setup the project:
 
-1. Install dependencies: yarn install
+1. Install dependencies: **yarn install**
 
-2. Start the development server: yarn run dev
+2. Start the development server: **yarn run dev**
 
