@@ -1,6 +1,6 @@
 import { storageApi } from "../envVariables";
 
-let storage = null;
+const cache = {};
 
 interface Response {
   status: number;
@@ -8,15 +8,13 @@ interface Response {
   json?: () => void;
 }
 
+
 export async function getAllPokemons() {
-  if (storage) {
-    return storage;
-  } else {
-    const { results } = await cachedJsonFetch(storageApi);
-    storage = results;
-    return storage;
-  }
+ const { results } = await cachedJsonFetch(storageApi);
+    return results;
 }
+
+
 
 export class RequestFailError extends Error {
   status: number;
@@ -26,7 +24,6 @@ export class RequestFailError extends Error {
   }
 }
 
-const cache = {};
 
 export async function cachedJsonFetch(url: string) {
   if (!cache[url]) {
