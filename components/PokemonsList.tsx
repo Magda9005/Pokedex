@@ -61,6 +61,7 @@ const PokemonsList: React.FC<PokemonsListProps> = ({
 
           return (
             <MiniCard
+              key={pokemonId}
               pokemon={pokemon}
               pokemonId={pokemonId}
               pokemonImage={pokemonImageBaseUrl}
