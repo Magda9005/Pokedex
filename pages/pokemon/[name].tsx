@@ -75,6 +75,7 @@ const Pokemon: React.FC<PokemonProps> = ({
 
   const statsSliders = statsArray.map((stat) => (
     <StatsSlider
+      key={stat[0]}
       statName={stat[0]}
       statValue={stat[1]}
       pokemonType={pokemonsCharacteristic.types[0].type.name}
