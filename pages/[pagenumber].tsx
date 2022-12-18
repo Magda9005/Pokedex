@@ -26,7 +26,7 @@ const PokemonsPage: React.FC<PokemonsPageProps> = ({
         <title>Pokedex </title>
       </Head>
       <PokemonPage
-        pageNr={router.query.pagenumber}
+        pageNr={router.query.pagenumber.toString()}
         pokemons={pokemons}
         pokemonsWithTypes={pokemonsWithTypes}
         allNames={allNames}
