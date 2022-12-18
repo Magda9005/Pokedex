@@ -1,13 +1,7 @@
 import Fuse from "fuse.js";
 import { useMemo } from "react";
 
-const useNewFuse = (
-  allNames: { name: string; url: string }[],
-  options: {
-    includeScore: boolean;
-    keys: string[];
-  }
-) => {
+const useNewFuse = (allNames,options) => {
   const fuse = useMemo(() => new Fuse(allNames, options), [allNames, options]);
 
   return { fuse };
