@@ -12,7 +12,7 @@ interface MiniCardProps {
   pokemonId: number;
   pokemonImage: string;
   pokemonName: string;
-  pokemonsNamesAndTypes: any;
+  pokemonsNamesAndTypes: unknown;
 }
 
 const MiniCard: React.FC<MiniCardProps> = ({

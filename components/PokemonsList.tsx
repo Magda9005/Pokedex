@@ -19,10 +19,10 @@ interface PokemonsListProps {
   displayError: boolean;
   handleDisplayError: Dispatch<SetStateAction<boolean>>;
   prevPageUrl: string;
-  pageNumber: number;
+  pageNumber: number|string;
   nextPageUrl: string;
   pokemons: { name: string; url: string }[];
-  pokemonsNamesAndTypes: { string: string };
+  pokemonsNamesAndTypes: {[key:string]:string};
   pokemonImageBaseUrl: string;
 }
 

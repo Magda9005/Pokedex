@@ -5,7 +5,7 @@ import { pokemonImgApi } from "../envVariables";
 import { getPreviousPage } from "../logic/urls";
 
 interface PokemonPageProps {
-  pageNr: number | string;
+  pageNr: number;
   pokemons: { name: string; url: string }[];
   pokemonsWithTypes: any[];
   allNames: { name: string; url: string }[];
@@ -26,7 +26,7 @@ const PokemonPage: React.FC<PokemonPageProps> = ({
   }
   const pagenumber = pageNr;
   useEffect(() => {
-    updateCookie(pagenumber);
+    updateCookie(pagenumber.toString());
   }, []);
 
   return (
@@ -36,7 +36,7 @@ const PokemonPage: React.FC<PokemonPageProps> = ({
       handleDisplayError={setDisplayError}
       prevPageUrl={pagenumber <= 1 ? "/" : getPreviousPage(pagenumber)}
       pageNumber={pagenumber}
-      nextPageUrl={`/${parseFloat(pagenumber) + 1}`}
+      nextPageUrl={`/${parseFloat(pagenumber.toString()) + 1}`}
       pokemons={pokemons}
       pokemonsNamesAndTypes={pokemonsNamesAndTypes}
       pokemonImageBaseUrl={pokemonImage}
