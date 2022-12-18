@@ -35,7 +35,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const pokemons = data.results;
   const allNames = await getAllPokemons();
   const pokemonsWithTypes = await getPokemonsWithTypes(pokemons, apiUrl);
-
   return {
     props: {
       pokemons,

@@ -8,17 +8,11 @@ interface Response {
   json?: () => void;
 }
 
-let storage=null;
-
 export async function getAllPokemons() {
-  if (storage) {
-    return storage;
-  } else {
-    const { results } = await cachedJsonFetch(storageApi);
-    storage = results;
-    return storage;
-  }
+ const { results } = await cachedJsonFetch(storageApi);
+    return results;
 }
+
 
 
 export class RequestFailError extends Error {
@@ -56,7 +50,7 @@ export async function getPokemonsWithTypes(
   const pokemonsWithTypes = [];
   for (const { name } of pokemons) {
     const data = await cachedJsonFetch(`${apiUrl}/pokemon/${name}`);
-    pokemonsWithTypes.push(data);
+    pokemonsWithTypes.push({name:data.name, type:data.types[0].type.name});
   }
 
   return pokemonsWithTypes;
