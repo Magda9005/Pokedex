@@ -32,8 +32,11 @@ body {
 }
 
 .copyright {
-  margin-top: 20px;
   font-size: 8px;
+
+  @include md{
+    font-size:12px;
+  }
 }
 
 .def {

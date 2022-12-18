@@ -1,5 +1,4 @@
 import styles from "./modules/pokemonParameters.module.scss";
-import Copyright from "./Copyright";
 import BaseStatItem from "./BaseStatItem";
 import AboutElement from "./AboutSection";
 
@@ -57,7 +56,6 @@ const PokemonParameters = ({
         elementName={statsSliders}
       />
     </div>
-    <Copyright />
   </div>
 );
 

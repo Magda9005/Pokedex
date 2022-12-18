@@ -13,6 +13,7 @@ import Pokeball from "../../components/pokeballImages/PokeballOnPokemonCard";
 import PokemonImage from "../../components/pokeballImages/PokemonImage";
 import ChevronButtons from "../../components/ChevronButtons";
 import { minPokemonId, maxPokemonId } from "../../utils/constants";
+import Copyright from '../../components/Copyright';
 
 let className = classNames.bind(styles);
 
@@ -122,8 +123,6 @@ const Pokemon: React.FC<PokemonProps> = ({
     styles.baseStatName
   );
 
-  console.log("Categorie" + categories);
-
   return (
     <>
       <Head>
@@ -173,6 +172,7 @@ const Pokemon: React.FC<PokemonProps> = ({
           }
         />
       </div>
+      <Copyright/>
     </>
   );
 };
