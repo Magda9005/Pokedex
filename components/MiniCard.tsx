@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import classNames from "classnames/bind";
-import styles from "./modules/miniCard.module.scss";
+import styles from "./modules/MiniCard.module.scss";
 
 let className = classNames.bind(styles);
 
