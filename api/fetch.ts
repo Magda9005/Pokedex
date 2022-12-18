@@ -8,12 +8,17 @@ interface Response {
   json?: () => void;
 }
 
+let storage=null;
 
 export async function getAllPokemons() {
- const { results } = await cachedJsonFetch(storageApi);
-    return results;
+  if (storage) {
+    return storage;
+  } else {
+    const { results } = await cachedJsonFetch(storageApi);
+    storage = results;
+    return storage;
+  }
 }
-
 
 
 export class RequestFailError extends Error {

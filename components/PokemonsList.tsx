@@ -9,11 +9,6 @@ import Pokeball from "../components/PokeballMainPage";
 import ErrorMessage from "../components/ErrorMessage";
 import { Dispatch, SetStateAction } from "react";
 
-interface Pokemon {
-  name: string;
-  url: string;
-}
-
 interface PokemonsListProps {
   allNames: { name: string; url: string }[];
   displayError: boolean;
