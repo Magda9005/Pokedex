@@ -9,11 +9,9 @@ interface Response {
 }
 
 export async function getAllPokemons() {
- const { results } = await cachedJsonFetch(storageApi);
-    return results;
+  const { results } = await cachedJsonFetch(storageApi);
+  return results;
 }
-
-
 
 export class RequestFailError extends Error {
   status: number;
@@ -22,7 +20,6 @@ export class RequestFailError extends Error {
     this.status = response.status;
   }
 }
-
 
 export async function cachedJsonFetch(url: string) {
   if (!cache[url]) {
@@ -50,7 +47,7 @@ export async function getPokemonsWithTypes(
   const pokemonsWithTypes = [];
   for (const { name } of pokemons) {
     const data = await cachedJsonFetch(`${apiUrl}/pokemon/${name}`);
-    pokemonsWithTypes.push({name:data.name, type:data.types[0].type.name});
+    pokemonsWithTypes.push({ name: data.name, type: data.types[0].type.name });
   }
 
   return pokemonsWithTypes;

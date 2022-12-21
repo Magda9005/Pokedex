@@ -1,7 +1,7 @@
 import Fuse from "fuse.js";
 import { useMemo } from "react";
 
-const useNewFuse = (allNames,options) => {
+const useNewFuse = (allNames, options) => {
   const fuse = useMemo(() => new Fuse(allNames, options), [allNames, options]);
 
   return { fuse };

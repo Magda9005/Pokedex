@@ -23,7 +23,6 @@ const PokemonPage: React.FC<PokemonPageProps> = ({
   const pokemonsNamesAndTypes = {};
   for (let pokemon of pokemonsWithTypes) {
     pokemonsNamesAndTypes[pokemon.name] = pokemon.type;
-
   }
   const pagenumber = pageNr;
   useEffect(() => {

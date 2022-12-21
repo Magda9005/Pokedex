@@ -13,7 +13,7 @@ import Pokeball from "../../components/pokeballImages/PokeballOnPokemonCard";
 import PokemonImage from "../../components/pokeballImages/PokemonImage";
 import ChevronButtons from "../../components/ChevronButtons";
 import { minPokemonId, maxPokemonId } from "../../utils/constants";
-import Copyright from '../../components/Copyright';
+import Copyright from "../../components/Copyright";
 
 let className = classNames.bind(styles);
 
@@ -172,7 +172,7 @@ const Pokemon: React.FC<PokemonProps> = ({
           }
         />
       </div>
-      <Copyright/>
+      <Copyright />
     </>
   );
 };
@@ -195,7 +195,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   } catch (err) {
-    if (err.message == 404) {
+    if (err.status == 404) {
       if (err instanceof RequestFailError) {
         return {
           notFound: true,

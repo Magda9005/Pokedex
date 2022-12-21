@@ -1,11 +1,12 @@
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import React from "react";
+import React, { useEffect } from "react";
 import textfieldStyle from "../utils/textfieldMuiStyle";
 import { fuzzySearchResults } from "../logic/search";
 import { useState } from "react";
 import { checkIfPokemonNameOrIdExists } from "../logic/data";
 import { Dispatch, SetStateAction } from "react";
+import { useRouter } from "next/router";
 
 interface PokemonSearchBarProps {
   allNames: { name: string; url: string }[];
@@ -15,23 +16,30 @@ interface PokemonSearchBarProps {
 
 const PokemonSearchBar: React.FC<PokemonSearchBarProps> = ({
   allNames,
-  displayError,
   handleDisplayError,
 }) => {
-  const [route, setRoute] = useState<string>();
+  const [pokemonSelected, setPokemonSelected] = useState<string>();
   const [text, setText] = useState("");
+  const router = useRouter();
 
-  const handlePokemonSearch = setRoute;
+  useEffect(() => {
+    if (pokemonSelected !== undefined) {
+      router.push(`/pokemon/${pokemonSelected}`.toLowerCase());
+    }
+  }, [pokemonSelected]);
+
+  const handlePokemonSearch = setPokemonSelected;
 
   const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
     if (
-      route == null ||
-      !checkIfPokemonNameOrIdExists(allNames, route.toLowerCase())
+      pokemonSelected == null ||
+      !checkIfPokemonNameOrIdExists(allNames, pokemonSelected.toLowerCase())
     ) {
-      e.preventDefault();
       return handleDisplayError(true);
     }
     handleDisplayError(false);
+    router.push(`/pokemon/${pokemonSelected}`.toLowerCase());
   };
 
   const handleOnChangeTextField = (
@@ -44,12 +52,7 @@ const PokemonSearchBar: React.FC<PokemonSearchBarProps> = ({
   };
 
   return (
-    <form
-      role="form"
-      action={!displayError && `/pokemon/${route}`.toLowerCase()}
-      method="GET"
-      onSubmit={(e) => handleSubmit(e)}
-    >
+    <form role="form" onSubmit={(e) => handleSubmit(e)}>
       <Autocomplete
         role="searchbox"
         aria-autocomplete="list"
