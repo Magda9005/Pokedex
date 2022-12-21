@@ -10,7 +10,7 @@ import classNames from "classnames/bind";
 import styles from "../../components/modules/pokemonCard.module.scss";
 import Head from "next/head";
 import Pokeball from "../../components/pokeballImages/PokeballOnPokemonCard";
-import PokemonImage from "../../components/pokeballImages/PokemonImage";
+import PokemonImage from "../../components/PokemonImage";
 import ChevronButtons from "../../components/ChevronButtons";
 import { minPokemonId, maxPokemonId } from "../../utils/constants";
 import Copyright from "../../components/Copyright";

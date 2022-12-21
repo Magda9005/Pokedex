@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../modules/pokemonCard.module.scss";
+import styles from "./modules/pokemonCard.module.scss";
 
 interface PokemonImageProps {
   src: string;

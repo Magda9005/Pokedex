@@ -5,7 +5,7 @@ import { lastAccessiblePage } from "../utils/constants";
 import { getPokemonId } from "../logic/data";
 import MiniCard from "./MiniCard";
 import PokemonSearchBar from "./SearchComponent";
-import Pokeball from "../components/PokeballMainPage";
+import Pokeball from "../components/pokeballImages/PokeballMainPage";
 import ErrorMessage from "../components/ErrorMessage";
 import { Dispatch, SetStateAction } from "react";
 
