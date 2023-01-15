@@ -26,6 +26,7 @@ const PokemonParameters = ({
           parameterValue={weight}
           src={"/scale.svg"}
           alt={"scale icon"}
+          parameterUnit={"kg"}
         />
         <AboutElement
           moves={false}
@@ -33,6 +34,7 @@ const PokemonParameters = ({
           parameterValue={height}
           src={"/ruler.svg"}
           alt={"ruler icon"}
+          parameterUnit={"m"}
         />
         <AboutElement
           moves={true}

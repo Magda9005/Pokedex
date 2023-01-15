@@ -7,6 +7,7 @@ interface AboutSectionProps {
   parameterValue?: number;
   src?: string;
   alt?: string;
+  parameterUnit:string
 }
 
 const AboutSection: React.FC<AboutSectionProps> = ({
@@ -16,6 +17,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
   parameterValue,
   src,
   alt,
+  parameterUnit
 }) => {
   return (
     <div className={styles.container}>
@@ -30,7 +32,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
         ) : (
           <span className={styles.aboutParameter}>
             <img src={src} alt={alt} className={styles.icon} /> {parameterValue}{" "}
-            kg
+            {parameterUnit}
           </span>
         )}
       </div>
