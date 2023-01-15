@@ -1,6 +1,7 @@
 # Pokédex
 
 Application using server-side rendering (SSR), created in React and Next.js, using Typescript.
+Check the app: <a>https://pokedex-app-ghmy.vercel.app/</a>
 
 ## About the project
 
