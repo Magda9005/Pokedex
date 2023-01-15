@@ -40,6 +40,7 @@ const PokemonParameters = ({
           moves={true}
           parameterName={"Moves"}
           abilities={abilities}
+          parameterUnit={null}
         />
       </div>
     </div>
