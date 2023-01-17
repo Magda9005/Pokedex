@@ -59,7 +59,7 @@ const PokemonParameters = ({
         elementName={statsSliders}
       />
     </div>
-  </div>
+    </div>
 );
 
 export default PokemonParameters;
