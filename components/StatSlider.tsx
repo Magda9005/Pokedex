@@ -40,12 +40,12 @@ const StatsSlider: React.FC<StatsSliderProps> = ({
 
   return (
     <div className={styles.statBarContainer}>
-    <div className={styles.lineContainer}>
-      <div
-        className={slider}
-        style={{ width: `${getStatValuePercentage(statName, statValue)}%` }}
-      ></div>
-    </div>
+      <div className={styles.lineContainer}>
+        <div
+          className={slider}
+          style={{ width: `${getStatValuePercentage(statName, statValue)}%` }}
+        ></div>
+      </div>
     </div>
   );
 };

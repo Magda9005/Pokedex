@@ -7,7 +7,7 @@ interface AboutSectionProps {
   parameterValue?: number;
   src?: string;
   alt?: string;
-  parameterUnit?:string
+  parameterUnit?: string;
 }
 
 const AboutSection: React.FC<AboutSectionProps> = ({
@@ -17,7 +17,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
   parameterValue,
   src,
   alt,
-  parameterUnit
+  parameterUnit,
 }) => {
   return (
     <div className={styles.container}>

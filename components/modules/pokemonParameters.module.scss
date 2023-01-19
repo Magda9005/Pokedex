@@ -98,8 +98,6 @@
   border-right: 1px solid lightgrey;
   font-size: 12px;
   padding-right: 8px;
- 
-
 
   @include md {
     font-size: 17px;
@@ -129,8 +127,6 @@
   }
 }
 
-
-
-
-
-
+.statsWrapper {
+  display: flex;
+}

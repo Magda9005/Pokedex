@@ -49,18 +49,19 @@ const PokemonParameters = ({
       <div className={styles.baseStatsHeader}>
         <p className={statsHeader}>Base stats </p>
       </div>
+      <div className={styles.statsWrapper}>
         <BaseStatItem elementClass={statName} elementName={statsHeaders} />
-      <BaseStatItem
-        elementClass={styles.baseStatScore}
-        elementName={statsResultsNumbers}
-      />
-      <BaseStatItem
-        elementClass={styles.baseStatVisualRepresentation}
-        elementName={statsSliders}
-      />
+        <BaseStatItem
+          elementClass={styles.baseStatScore}
+          elementName={statsResultsNumbers}
+        />
+        <BaseStatItem
+          elementClass={styles.baseStatVisualRepresentation}
+          elementName={statsSliders}
+        />
+      </div>
     </div>
-    </div>
-    
+  </div>
 );
 
 export default PokemonParameters;

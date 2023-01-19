@@ -18,12 +18,12 @@
   border-bottom-left-radius: 3px;
 }
 
-.statBarContainer{
-display:flex;
-align-items: center;  
-height:15px;
+.statBarContainer {
+  display: flex;
+  align-items: center;
+  height: 15px;
 
-@include md{
-  height:25px
-}
+  @include md {
+    height: 25px;
+  }
 }
