@@ -268,3 +268,13 @@
     padding-left: 15px;
   }
 }
+
+.statHeader,.statResult{
+  display:flex;
+  align-items: center;
+  height:15px;
+
+  @include md{
+    height:25px;
+  }
+}

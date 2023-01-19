@@ -67,21 +67,31 @@ const Pokemon: React.FC<PokemonProps> = ({
   let statsArray = Object.entries(stats);
 
   const statsHeaders = statsArray.map((stat) => (
-    <span key={stat[0]}>{stat[0].toUpperCase()}</span>
+      <div key={stat[0]} className={styles.statHeader}>{stat[0].toUpperCase()}
+      </div>
+    
   ));
+
 
   const statsResultsNumbers = statsArray.map((stat) => (
-    <span key={stat[0]}>{stat[1]}</span>
+      <div key={stat[0]} className={styles.statResult}>{stat[1]}
+      </div>
+   
   ));
 
+
+
   const statsSliders = statsArray.map((stat) => (
-    <StatsSlider
+      <StatsSlider
       key={stat[0]}
       statName={stat[0]}
       statValue={stat[1]}
       pokemonType={pokemonsCharacteristic.types[0].type.name}
-    />
+    />    
+    
   ));
+
+
 
   const pokemonImage: string = pokemonImgApi;
 
@@ -207,3 +217,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 };
 export default Pokemon;
+
+

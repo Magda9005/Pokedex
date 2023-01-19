@@ -49,7 +49,7 @@ const PokemonParameters = ({
       <div className={styles.baseStatsHeader}>
         <p className={statsHeader}>Base stats </p>
       </div>
-      <BaseStatItem elementClass={statName} elementName={statsHeaders} />
+        <BaseStatItem elementClass={statName} elementName={statsHeaders} />
       <BaseStatItem
         elementClass={styles.baseStatScore}
         elementName={statsResultsNumbers}
@@ -60,6 +60,7 @@ const PokemonParameters = ({
       />
     </div>
     </div>
+    
 );
 
 export default PokemonParameters;
